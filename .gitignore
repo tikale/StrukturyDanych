@@ -35,3 +35,4 @@
 Debug
 .vs
 *.log
+.vs/StrukturyDanych/v15/ipch/*.ipch
