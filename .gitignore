@@ -33,5 +33,5 @@
 
 # VS
 Debug
-Debug\StrukturyDanych.tlog
-.vs\StrukturyDanych
+.vs
+*.log
