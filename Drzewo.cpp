@@ -1,6 +1,6 @@
 #include "pch.h"
 const int WIELKOSCDRZEWA = 15;
-int WartoscDrzewa[WIELKOSCDRZEWA];
+static int WartoscDrzewa[WIELKOSCDRZEWA];
 
 static void WyswietlDrzewo()
 {
@@ -79,20 +79,18 @@ static bool Add()
 	index = 0;
 	while (true)
 	{
+		if (index >= WIELKOSCDRZEWA)
+		{
+			cout << "Osiagnieto koniec indexu.\n";
+			return true;
+		}
 		if (WartoscDrzewa[index] == 0)
 		{
 			WartoscDrzewa[index] = liczba;
 			return true;
 		}
 		if (liczba > WartoscDrzewa[index])
-		{
 			index = (index + 1) * 2;
-			if (index >= WIELKOSCDRZEWA)
-			{
-				cout << "Osiagnieto koniec indexu.\n";
-				return true;
-			}
-		}
 		else if (liczba < WartoscDrzewa[index])
 			index = ((index + 1) * 2) - 1;
 		else if (liczba == WartoscDrzewa[index])
@@ -107,9 +105,49 @@ static bool Add()
 return true;
 }
 
-static void Find()
+static bool Find()
 {
+	int liczba;
+	int index;
 
+	cout << "Podaj wartoœæ szukanego elementu od 1 do 999: \n";
+	cin >> liczba;
+
+	index = 0;
+	while (true)
+	{
+		if (index >= WIELKOSCDRZEWA)
+		{
+			cout << "Szukanego elementu nie ma w badzie.\n";
+			return true;
+		}
+		
+		if (WartoscDrzewa[index] == 0)
+		{
+			cout << "Drzewo jest puste.\n";
+			return true;
+		}
+		if (liczba > WartoscDrzewa[index])
+		{
+			index = (index + 1) * 2;
+
+		}
+		else if (liczba < WartoscDrzewa[index])
+		{
+			index = ((index + 1) * 2) - 1;
+		}
+		else if (liczba == WartoscDrzewa[index])
+		{
+			cout << "Element o wartoœci ";
+			cout << liczba;
+			cout << " jest na pozycji ";
+			cout << index;
+			cout << ".";
+			return true;
+		}
+	}
+
+	return true;
 }
 
 bool Drzewo()

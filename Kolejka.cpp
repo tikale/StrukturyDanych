@@ -1,6 +1,6 @@
 #include "pch.h"
 const int WIELKOSCKOLEJKI = 10;
-int WartoscKolejki[WIELKOSCKOLEJKI];
+static int WartoscKolejki[WIELKOSCKOLEJKI];
 
 static void WyswietlKolejke()
 {
@@ -32,6 +32,26 @@ static void Wyswietl()
 	MenuKolejki();
 }
 
+static void Push()
+{
+
+}
+
+static void Pop()
+{
+
+}
+
+static void Size()
+{
+
+}
+
+static void Empty()
+{
+
+}
+
 bool Kolejka()
 {
 	int OpcjeKolejki;
@@ -43,12 +63,16 @@ bool Kolejka()
 		switch (OpcjeKolejki)
 		{
 		case 1:
+			Push();
 			break;
 		case 2:
+			Pop();
 			break;
 		case 3:
+			Size();
 			break;
 		case 4:
+			Empty();
 			break;
 		case 5:
 			return true;

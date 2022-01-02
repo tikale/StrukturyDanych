@@ -35,6 +35,47 @@ static void Wyswietl()
 	MenuListy();
 }
 
+static void Push_front()
+{
+
+}
+static void Push_back()
+{
+
+}
+static void Pop_front()
+{
+
+}
+static void Pop_back()
+{
+
+}
+static void Size()
+{
+
+}
+static void Max_Size()
+{
+
+}
+static void Empty()
+{
+
+}
+static void Remove()
+{
+
+}
+static void Sort()
+{
+
+}
+static void Reverse()
+{
+
+}
+
 bool Lista()
 {
 	int OpcjeListy;
@@ -46,24 +87,34 @@ bool Lista()
 		switch (OpcjeListy)
 		{
 		case 1:
+			Push_front();
 			break;
 		case 2:
+			Push_back();
 			break;
 		case 3:
+			Pop_front();
 			break;
 		case 4:
+			Pop_back();
 			break;
 		case 5:
+			Size();
 			break;
 		case 6:
+			Max_Size();
 			break;
 		case 7:
+			Empty();
 			break;
 		case 8:
+			Remove();
 			break;
 		case 9:
+			Sort();
 			break;
 		case 10:
+			Reverse();
 			break;
 			
 		case 11:
