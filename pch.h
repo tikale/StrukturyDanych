@@ -10,5 +10,6 @@ extern bool Drzewo(void);
 extern bool Lista(void);
 extern bool Stos(void);
 extern bool Kolejka(void);
+extern int PodajWartosc(void);
 
 #endif //PCH_H

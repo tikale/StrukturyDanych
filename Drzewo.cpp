@@ -54,7 +54,6 @@ static void MenuDrzewa()
 static void Wyswietl()
 {
 	system("cls");
-	Sleep(500);
 
 	WyswietlDrzewo();
 	MenuDrzewa();
@@ -73,8 +72,9 @@ static bool Add()
 	int liczba;
 	int index;
 
-	cout << "Podaj wartoœæ elementu od 1 do 999: \n";
-	cin >> liczba;
+	liczba = PodajWartosc();
+	if (liczba == 0)
+		return false;
 
 	index = 0;
 	while (true)

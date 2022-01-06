@@ -1,6 +1,8 @@
 #include "pch.h"
 const int WIELKOSCKOLEJKI = 10;
 static int WartoscKolejki[WIELKOSCKOLEJKI];
+static int ogon;
+static int glowa;
 
 static void WyswietlKolejke()
 {
@@ -26,35 +28,77 @@ static void MenuKolejki()
 static void Wyswietl()
 {
 	system("cls");
-	Sleep(500);
 
 	WyswietlKolejke();
 	MenuKolejki();
 }
 
-static void Push()
+static bool Push()
 {
+int liczba;
 
+	if (WartoscKolejki[ogon] == 0)
+	{
+		liczba = PodajWartosc();
+		if (liczba == 0)
+			return false;
+		WartoscKolejki[ogon] = liczba;
+		if (ogon < WIELKOSCKOLEJKI)
+			ogon++;
+		else
+			ogon = 0;
+	}
+	else
+	{
+		cout << "Kolejka pe³na !\n";
+		return false;
+	}
+
+	return true;
 }
 
-static void Pop()
+static bool Empty()
 {
-
+	if (WartoscKolejki[glowa] == 0)
+		return true;
+	else
+		return false;
 }
 
-static void Size()
+static int Pop()
 {
+int liczba;
+	if (Empty())
+	{
+		cout << "Kolejka jest pusta !\n";
+		return 0;
+	}
 
+	liczba = WartoscKolejki[glowa];
+	WartoscKolejki[glowa] = 0;
+	if (glowa < WIELKOSCKOLEJKI)
+		glowa++;
+	else
+		glowa = 0;
+
+	return liczba;
 }
 
-static void Empty()
+static int Size()
 {
-
+	int size = 0;
+	for (int ii = 0; ii < WIELKOSCKOLEJKI; ii++)
+	{
+		if (WartoscKolejki[ii] > 0)
+			size++;
+	}
+	return size;
 }
 
 bool Kolejka()
 {
 	int OpcjeKolejki;
+	int liczba;
 
 	do {
 		Wyswietl();
@@ -66,13 +110,29 @@ bool Kolejka()
 			Push();
 			break;
 		case 2:
-			Pop();
+			liczba = Pop();
+			if (liczba != 0)
+			{
+				cout << "Liczba zdjeta ze stosu to: ";
+				cout << liczba;
+				cout << "\n";
+			}
+			_getch();
 			break;
 		case 3:
-			Size();
+			liczba = Size();
+			cout << "Rozmiar kolejki to: ";
+			cout << liczba;
+			cout << "\n";
+			_getch();
 			break;
 		case 4:
-			Empty();
+			cout << "Czy kolejka jest pusta? ";
+			if (Empty())
+				cout << "Tak\n";
+			else
+				cout << "Nie\n";
+			_getch();
 			break;
 		case 5:
 			return true;

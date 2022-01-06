@@ -29,7 +29,6 @@ static void MenuListy()
 static void Wyswietl()
 {
 	system("cls");
-	Sleep(500);
 
 	WyswietlListe();
 	MenuListy();

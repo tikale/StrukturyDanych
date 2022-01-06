@@ -29,7 +29,6 @@ static void MenuStosu()
 static void Wyswietl()
 {
 	system("cls");
-	Sleep(500);
 
 	WyswietlStos();
 	MenuStosu();
@@ -37,10 +36,12 @@ static void Wyswietl()
 
 static bool Push()
 {
-	int Liczba;
-	cout << "Podaj wartosc elementu: ";
-	cin >> Liczba;
-	cout << "\n";
+	int liczba;
+
+	liczba = PodajWartosc();
+	if (liczba == 0)
+		return false;
+
 	if (IndexStosu >= WIELKOSCSTOSU)
 	{
 		cout << "Stos jest pelny.\n";
@@ -50,7 +51,7 @@ static bool Push()
 	else
 	{
 		IndexStosu++;
-		WartoscStosu[IndexStosu] = Liczba;
+		WartoscStosu[IndexStosu] = liczba;
 	}
 	return true;
 }
@@ -115,9 +116,8 @@ bool Stos()
 			_getch();
 			break;
 		case 4:
-			liczba = Empty();
 			cout << "Czy stos jest pusty? ";
-			if (liczba > 0)
+			if (Empty())
 				cout << "Tak\n";
 			else
 				cout << "Nie\n";
