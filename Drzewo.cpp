@@ -82,6 +82,7 @@ static bool Add()
 		if (index >= WIELKOSCDRZEWA)
 		{
 			cout << "Osiagnieto koniec indexu.\n";
+			_getch();
 			return true;
 		}
 		if (WartoscDrzewa[index] == 0)
@@ -98,6 +99,7 @@ static bool Add()
 			cout << "Element o wartoœci ";
 			cout << liczba;
 			cout << " juz istnieje!\n";
+			_getch();
 			return true;
 		}
 	}
@@ -110,23 +112,24 @@ static bool Find()
 	int liczba;
 	int index;
 
+	if (WartoscDrzewa[0] == 0)
+	{
+		cout << "Drzewo jest puste.\n";
+		return true;
+	}
+
 	cout << "Podaj wartoœæ szukanego elementu od 1 do 999: \n";
 	cin >> liczba;
 
 	index = 0;
 	while (true)
 	{
-		if (index >= WIELKOSCDRZEWA)
+		if((index >= WIELKOSCDRZEWA) || (WartoscDrzewa[index] == 0))
 		{
 			cout << "Szukanego elementu nie ma w badzie.\n";
 			return true;
-		}
-		
-		if (WartoscDrzewa[index] == 0)
-		{
-			cout << "Drzewo jest puste.\n";
-			return true;
-		}
+		}	
+
 		if (liczba > WartoscDrzewa[index])
 		{
 			index = (index + 1) * 2;
@@ -166,6 +169,7 @@ bool Drzewo()
 			break;
 		case 2:
 			Find();
+			_getch();
 			break;
 		case 3:
 			Clean();

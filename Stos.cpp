@@ -8,7 +8,7 @@ static void WyswietlStos()
 {
 	system("cls");
 	cout << "Zawartosc stosu:\n";
-	for (int ii = 1; ii < WIELKOSCSTOSU; ii++)
+	for (int ii = 1; ii <= WIELKOSCSTOSU; ii++)
 	{
 		cout << WartoscStosu[ii];
 		cout << "\n";
@@ -44,6 +44,7 @@ static bool Push()
 	if (IndexStosu >= WIELKOSCSTOSU)
 	{
 		cout << "Stos jest pelny.\n";
+		_getch();
 		return false;
 	}
 	else
@@ -95,21 +96,23 @@ bool Stos()
 		{
 		case 1:
 			Push();
-			Sleep(2000);
 			break;
 		case 2:
 			liczba = Pop();
-			cout << "Liczba zdjeta ze stosu to: ";
-			cout << liczba;
-			cout << "\n";
-			Sleep(2000);
+			if (liczba != 0)
+				{
+				cout << "Liczba zdjeta ze stosu to: ";
+				cout << liczba;
+				cout << "\n";
+				}
+			_getch();
 			break;
 		case 3:
 			liczba = Size();
 			cout << "Rozmiar stosu to: ";
 			cout << liczba;
 			cout << "\n";
-			Sleep(2000);
+			_getch();
 			break;
 		case 4:
 			liczba = Empty();
@@ -118,7 +121,7 @@ bool Stos()
 				cout << "Tak\n";
 			else
 				cout << "Nie\n";
-			Sleep(2000);
+			_getch();
 			break;
 		case 5:
 			return true;
@@ -126,7 +129,6 @@ bool Stos()
 		default:
 			break;
 		}
-
 	} while (true);
 
 return false;
