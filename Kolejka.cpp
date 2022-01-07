@@ -4,14 +4,33 @@ static int WartoscKolejki[WIELKOSCKOLEJKI];
 static int ogon;
 static int glowa;
 
+static int Size()
+{
+	int size = 0;
+	for (int ii = 0; ii < WIELKOSCKOLEJKI; ii++)
+	{
+		if (WartoscKolejki[ii] > 0)
+			size++;
+	}
+	return size;
+}
+
 static void WyswietlKolejke()
 {
 	cout << "Zawartosc kolejki:\n";
-	for (int ii = 0; ii < WIELKOSCKOLEJKI; ii++)
+
+	int size = Size();
+	int index = glowa;
+
+	for (int ii = 0; ii < size; ii++)
 	{
-		cout << WartoscKolejki[ii];
-		cout << "\n";
+		index = glowa + ii;
+		if (glowa + ii >= WIELKOSCKOLEJKI)
+			index = (glowa + ii) - WIELKOSCKOLEJKI;
+		cout << WartoscKolejki[index];
+		cout << ", ";
 	}
+	
 	cout << "\n";
 }
 
@@ -43,14 +62,15 @@ int liczba;
 		if (liczba == 0)
 			return false;
 		WartoscKolejki[ogon] = liczba;
-		if (ogon < WIELKOSCKOLEJKI)
+		if (ogon < WIELKOSCKOLEJKI - 1)
 			ogon++;
 		else
 			ogon = 0;
 	}
 	else
 	{
-		cout << "Kolejka pe³na !\n";
+		cout << "Kolejka pelna !\n";
+		_getch();
 		return false;
 	}
 
@@ -84,17 +104,6 @@ int liczba;
 	return liczba;
 }
 
-static int Size()
-{
-	int size = 0;
-	for (int ii = 0; ii < WIELKOSCKOLEJKI; ii++)
-	{
-		if (WartoscKolejki[ii] > 0)
-			size++;
-	}
-	return size;
-}
-
 bool Kolejka()
 {
 	int OpcjeKolejki;
@@ -113,7 +122,7 @@ bool Kolejka()
 			liczba = Pop();
 			if (liczba != 0)
 			{
-				cout << "Liczba zdjeta ze stosu to: ";
+				cout << "Liczba zdjeta z kolejki to: ";
 				cout << liczba;
 				cout << "\n";
 			}
