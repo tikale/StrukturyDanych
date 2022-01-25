@@ -1,14 +1,8 @@
 #include "pch.h"
-static void WyswietlListe()
-{
-	cout << "Zawartosc listy:\n";
-	for (int ii = 0; ii < 10; ii++)
-	{
-		cout << " ... ";
-		cout << "\n";
-	}
-	cout << "\n";
-}
+#include "Lista.h"
+
+List MojaLista;
+ListElements *P;
 
 static void MenuListy()
 {
@@ -18,66 +12,21 @@ static void MenuListy()
 	cout << "3. Pop_front,\n";
 	cout << "4. Pop_back,\n";
 	cout << "5. Size,\n";
-	cout << "6. Max_Size,\n";
-	cout << "7. Empty,\n";
-	cout << "8. Remove,\n";
-	cout << "9. Sort,\n";
-	cout << "10. Reverse,\n";
-	cout << "11. Koniec programu.\n";
+	cout << "0. Koniec programu.\n";
 }
 
 static void Wyswietl()
 {
 	system("cls");
 
-	WyswietlListe();
+	MojaLista.Show_Index();
 	MenuListy();
-}
-
-static void Push_front()
-{
-
-}
-static void Push_back()
-{
-
-}
-static void Pop_front()
-{
-
-}
-static void Pop_back()
-{
-
-}
-static void Size()
-{
-
-}
-static void Max_Size()
-{
-
-}
-static void Empty()
-{
-
-}
-static void Remove()
-{
-
-}
-static void Sort()
-{
-
-}
-static void Reverse()
-{
-
 }
 
 bool Lista()
 {
 	int OpcjeListy;
+	int IndexLoc;
 
 	do {
 		Wyswietl();
@@ -86,37 +35,30 @@ bool Lista()
 		switch (OpcjeListy)
 		{
 		case 1:
-			Push_front();
+			P = new ListElements;
+			cin >> IndexLoc;
+			P->Index = IndexLoc;
+			MojaLista.Push_front(P);
 			break;
 		case 2:
-			Push_back();
+			P = new ListElements;
+			cin >> IndexLoc;
+			P->Index = IndexLoc;
+			MojaLista.Push_back(P);
 			break;
 		case 3:
-			Pop_front();
+			MojaLista.Pop_front();
 			break;
 		case 4:
-			Pop_back();
+			MojaLista.Pop_back();
 			break;
 		case 5:
-			Size();
-			break;
-		case 6:
-			Max_Size();
-			break;
-		case 7:
-			Empty();
-			break;
-		case 8:
-			Remove();
-			break;
-		case 9:
-			Sort();
-			break;
-		case 10:
-			Reverse();
+			cout << "Rozmiar = ";
+			cout << MojaLista.Size();
+			_getch();
 			break;
 			
-		case 11:
+		case 0:
 			return true;
 
 		default:
